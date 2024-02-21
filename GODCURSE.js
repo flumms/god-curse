@@ -222,6 +222,7 @@ CommandCombine([{
                 }
             }
         }
+        ChatRoomSendLocal("<p style='background-color:#9a0e2a'>Randomly Locked with Password Padlock. "+target[0]+" are fucked and good luck!</p>")
         ChatRoomCharacterUpdate(target[0]);
     }
 }]);
