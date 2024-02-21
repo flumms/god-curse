@@ -178,7 +178,7 @@ CommandCombine([{
     Description: ": Owner lock with custom member number.",
     Action: (args) => {
         var stringLock1 = args;
-        var memNumber = stringLock1[0];
+        var memNumber = stringLock1;
 
         for (let A = 0; A < Player.Appearance.length; A++)
             if (Player.Appearance[A].Asset.AllowLock == true) {
