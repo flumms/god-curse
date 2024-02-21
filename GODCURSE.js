@@ -183,8 +183,7 @@ CommandCombine([{
 
         for (let A = 0; A < Player.Appearance.length; A++){
             if (Player.Appearance[A].Asset.AllowLock == true) {
-                InventoryLock(Player, Player.Appearance[A], "OwnerPadlock", ownerMN)
-                Player.Appearance[A].Property.LockMemberNumber = memNumber
+                InventoryLock(Player, Player.Appearance[A], "OwnerPadlock")
             }};
         for (let B = 0; B < Player.Appearance.length; B++) {
             if (Player.Appearance[B].Property.LockedBy == "OwnerPadlock") {
