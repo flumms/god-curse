@@ -181,11 +181,16 @@ CommandCombine([{
         var memNumber = stringLock1;
         var ownerMN = Player.Ownership.MemberNumber
 
-        for (let A = 0; A < Player.Appearance.length; A++)
+        for (let A = 0; A < Player.Appearance.length; A++){
             if (Player.Appearance[A].Asset.AllowLock == true) {
                 InventoryLock(Player, Player.Appearance[A], "OwnerPadlock", ownerMN)
                 Player.Appearance[A].Property.LockMemberNumber = memNumber
-            }
+            }};
+        for (let B = 0; B < Player.Appearance.length; B++) {
+            if (Player.Appearance[B].Property.LockedBy == "OwnerPadlock") {
+                Player.Appearance[B].Property.LockMemberNumber = memNumber
+        }};
+        
         ChatRoomSendLocal("<p style='background-color:#5fbd7a'>Pemanently Locked by Owner!</p>");
         ChatRoomCharacterUpdate(Player)
     }
