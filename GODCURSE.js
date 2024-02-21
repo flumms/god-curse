@@ -226,3 +226,25 @@ CommandCombine([{
         ChatRoomCharacterUpdate(target[0]);
     }
 }]);
+
+
+CommandCombine([{
+    Tag: 'permlock',
+    Description: ": Owner locked the target.",
+    Action: (args) => {
+        var strLock1 = args;
+        var targetname = strLock1;
+        var targetfinder = new RegExp('^' + targetname + '', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+
+        var ownerMN = target[0].Ownership.MemberNumber;
+        var ownership = target[0].Ownership;
+
+        for (let A = 0; A < target[0].Appearance.length; A++)
+            if (target[0].Appearance[A].Asset.AllowLock == true) {
+                InventoryLock(target[0], target[0].Appearance[A], "OwnerPadlock", ownerMN)
+            } ChatRoomSendLocal("<p style='background-color:#9a0e2a'>Pemanently Locked by Owner!</p>");
+        ChatRoomCharacterUpdate(target[0]);
+        CharacterRefresh(target[0]);
+    }
+}]);
