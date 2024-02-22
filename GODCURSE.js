@@ -230,3 +230,27 @@ CommandCombine([{
         ChatRoomCharacterUpdate(target[0]);
     }
 }]);
+
+//randcd - Randomize combination lock, different password each locks.
+CommandCombine([{
+    Tag: 'randcd',
+    Description: ": Randomize combination lock, different password each locks.",
+    Action: (args) => {
+    
+        var strLock1 = args;
+        var targetname = strLock1;
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        
+        for (let A = 0; A < target[0].Appearance.length; A++) {
+
+            if (target[0].Appearance[A].Asset.AllowLock == true) {
+                InventoryLock(target[0], target[0].Appearance[A], "CombinationPadlock")
+                var code = String(Math.floor(Math.random() * 9000) + 1000);
+                target[0].Appearance[A].Property.CombinationNumber = code
+            }
+        };
+        ChatRoomSendLocal("<p style='background-color:#9a0e2a'>Every binding has been locked with random key!. You're fucked!. </p>");
+        ChatRoomCharacterUpdate(target[0]);
+    }
+}]);
