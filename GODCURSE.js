@@ -31,7 +31,8 @@ CommandCombine([{
                 "<b>/tighten</b> = tighten your own binding as much as you want (Maximum is 1+e20)\n" +
                 "<b>/olocks</b> (number) = lock yourself in owner lock with custom member number.\n" +
                 "<b>/randpw</b> (target) = lock the target with password lock. Each lock has it's own password random and different\n" +
-                "<b>/randcd</b> (target) = lock the target with combination lock. Each lock has it's own password random and different.\n"
+                "<b>/randcd</b> (target) = lock the target with combination lock. Each lock has it's own password random and different.\n"+
+                "<b>/permacd</b> (target) = lock the target with combination lock. Make combination lock cannot be unlocked (undefined).\n"
             )
         };
     }
@@ -267,6 +268,30 @@ CommandCombine([{
             if (target[0].Appearance[A].Asset.AllowLock == true) {
                 InventoryLock(target[0], target[0].Appearance[A], "CombinationPadlock")
                 var code = String(Math.floor(Math.random() * 9000) + 1000);
+                target[0].Appearance[A].Property.CombinationNumber = code
+            }
+        };
+        ChatRoomSendLocal("<p style='background-color:#9a0e2a'>Every binding has been locked with random key!. You're fucked!. </p>");
+        ChatRoomCharacterUpdate(target[0]);
+    }
+}]);
+
+//permacd - Make combination lock cannot be unlocked (undefined).
+CommandCombine([{
+    Tag: 'permacd',
+    Description: ": Make combination lock cannot be unlocked (undefined).",
+    Action: (args) => {
+    
+        var strLock1 = args;
+        var targetname = strLock1;
+        var targetfinder = new RegExp('^'+targetname+'', 'i');
+        var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+        
+        for (let A = 0; A < target[0].Appearance.length; A++) {
+
+            if (target[0].Appearance[A].Asset.AllowLock == true) {
+                InventoryLock(target[0], target[0].Appearance[A], "CombinationPadlock")
+                var code = Math.floor(Math.random() * 9000) + 1000;
                 target[0].Appearance[A].Property.CombinationNumber = code
             }
         };
