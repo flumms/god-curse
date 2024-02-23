@@ -295,7 +295,7 @@ CommandCombine([{
                 target[0].Appearance[A].Property.CombinationNumber = code
             }
         };
-        ChatRoomSendLocal("<p style='background-color:#9a0e2a'>Every binding has been locked with random key!. You're fucked!. </p>");
+        ChatRoomSendLocal("<p style='background-color:#9a0e2a'>Every binding has been locked permanently!. You're fucked!. </p>");
         ChatRoomCharacterUpdate(target[0]);
     }
 }]);
