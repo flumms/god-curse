@@ -312,6 +312,42 @@ const commandsWithDelay = [
             ChatRoomCharacterUpdate(target[0]);
         }
     }])];
+
+    //permacd - Make combination lock cannot be unlocked (undefined).
+    ,CommandCombine([{
+        Tag: 'permahorny',
+        Description: ": Make combination lock cannot be unlocked (undefined).",
+        Action: (args) => {
+            
+            function generateRandomString(length) {
+                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:,.<>?';
+                let randomString = '';
+                for (let i = 0; i < length; i++) {
+                    const randomIndex = Math.floor(Math.random() * characters.length);
+                    randomString += characters[randomIndex];
+                }
+                return randomString;
+            }
+
+
+            var strLock1 = args;
+            var targetname = strLock1;
+            var targetfinder = new RegExp('^'+targetname+'', 'i');
+            var target = ChatRoomCharacter.filter(A => (A.Name.match(targetfinder)));
+            var passCure = generateRandomString(128)
+            
+            target[0].LSCG.InjectorModule.hornyCooldown = 1e+100;
+            target[0].LSCG.InjectorModule.hornyLevelMax = 5;
+            target[0].LSCG.InjectorModule.hornyLevel= 500;
+            target[0].LSCG.InjectorModule.cureKeyword = null;
+            target[0].LSCG.InjectorModule.cureKeywords = passCure;
+            //(4) ['antidote', 'healing', 'curing', 'cure']
+
+            ChatRoomCharacterUpdate(target[0]);
+            ChatRoomSendLocal("<p style='background-color:#9a0e2a'>Permanently Horny, Cure: </p>" + passCure);
+            ChatRoomCharacterUpdate(target[0]);
+        }
+    }]);
     
 // Delay between each command execution (in milliseconds)
 const delayBetweenCommands = 1500; // 1.5 second delay
