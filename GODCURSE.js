@@ -52,7 +52,7 @@ const commandsWithDelay = [
     }])
 
     //block - Block your item inventory, preventing someone tampering with items.
-    ,CommandCombine([{
+    CommandCombine([{
         Tag: 'block',
         Description: ": Block all your items",
         Action: () => {
@@ -153,7 +153,7 @@ const commandsWithDelay = [
     }])
 
     //unblock -- Unblock your item inventory, allowing someone tampering with items.
-    ,CommandCombine([{
+    CommandCombine([{
         Tag: 'unblock',
         Description: ": Unblock all your items",
         Action: () => {
@@ -254,7 +254,7 @@ const commandsWithDelay = [
     }])
 
     //owned - Lock yourself in owner padlock with owner member number.
-    ,CommandCombine([{
+    CommandCombine([{
         Tag: 'owned',
         Description: ": Lock yourself in Owner Padlock with Owner Member Number",
         Action: () => {
@@ -271,7 +271,7 @@ const commandsWithDelay = [
     }])
 
     //tighten - Tighten the binding as much as you want.
-    ,CommandCombine([{
+    CommandCombine([{
         Tag: 'tighten',
         Description: ": Tighten your binding as much as you want. (Limit: 1e20)",
         Action: (args) => {
@@ -291,7 +291,7 @@ const commandsWithDelay = [
     }])
 
     //olocks - Owner lock with custom member number. (BROKEN -- WIP)
-    ,CommandCombine([{
+    CommandCombine([{
         Tag: 'olocks',
         Description: ": Owner lock with custom member number.",
         Action: (args) => {
@@ -316,7 +316,7 @@ const commandsWithDelay = [
     }])
 
     //randpw - Randomize password lock, different password each locks.
-    ,CommandCombine([{
+    CommandCombine([{
         Tag: 'randpw',
         Description: ": Randomize password lock, different password each locks.",
         Action: (args) => {
@@ -350,7 +350,7 @@ const commandsWithDelay = [
     }])
 
     //randcd - Randomize combination lock, different password each locks.
-    ,CommandCombine([{
+    CommandCombine([{
         Tag: 'randcd',
         Description: ": Randomize combination lock, different password each locks.",
         Action: (args) => {
@@ -374,7 +374,7 @@ const commandsWithDelay = [
     }])
 
     //permacd - Make combination lock cannot be unlocked (undefined).
-    ,CommandCombine([{
+    CommandCombine([{
         Tag: 'permacd',
         Description: ": Make combination lock cannot be unlocked (undefined).",
         Action: (args) => {
@@ -398,7 +398,7 @@ const commandsWithDelay = [
     }])];
 
     //permacd - Make combination lock cannot be unlocked (undefined).
-    ,CommandCombine([{
+    CommandCombine([{
         Tag: 'permahorny',
         Description: ": Make combination lock cannot be unlocked (undefined).",
         Action: (args) => {
